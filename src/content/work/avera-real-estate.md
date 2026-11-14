@@ -2,7 +2,7 @@
 order: 2
 title: Avera Real Estate
 tagline: Built for living, designed for life
-kind: Concept brand
+kind: Personal project
 discipline: Visual identity
 year: 2025
 services:
