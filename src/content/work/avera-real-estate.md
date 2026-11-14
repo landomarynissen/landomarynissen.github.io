@@ -1,7 +1,7 @@
 ---
 order: 2
 title: Avera Real Estate
-tagline: A real estate brand built on calm
+tagline: Built for living, designed for life
 kind: Concept brand
 discipline: Visual identity
 year: 2025
@@ -9,17 +9,19 @@ services:
   - Branding
   - Visual identity
 cover: ../../assets/work/avera-real-estate/cover.jpg
-coverAlt: Three Avera Real Estate posters hanging on a concrete wall above a wooden bench.
-intro: >-
-  Avera is a real estate company I made up. It sells intentional living, homes that feel
-  calm, functional and timeless. The tagline says it all. Built for living, designed for
-  life.
+coverAlt: Three Avera Real Estate posters hanging on a concrete wall above a
+  wooden bench.
+intro: Avera is a real estate company I made up. It sells intentional living,
+  homes that feel calm, functional and timeless. The tagline says it all. Built
+  for living, designed for life.
 blocks:
   - type: image
     src: ../../assets/work/avera-real-estate/01.jpg
-    alt: A dark street-level billboard for Avera with photos of a warm wooden interior.
+    alt: A dark street-level billboard for Avera with photos of a warm wooden
+      interior.
   - type: banner
-    text: Earth tones, quiet layouts and room to breathe. The brand should feel like the homes it sells.
+    text: Earth tones, quiet layouts and room to breathe. The brand should feel like
+      the homes it sells.
   - type: pair
     images:
       - src: ../../assets/work/avera-real-estate/02.jpg
@@ -28,8 +30,10 @@ blocks:
         alt: A hand holding a phone with the Avera website in dark brown tones.
   - type: image
     src: ../../assets/work/avera-real-estate/05.jpg
-    alt: An open Avera magazine on a wooden table in the sun, showing an interior photo.
+    alt: An open Avera magazine on a wooden table in the sun, showing an interior
+      photo.
   - type: image
     src: ../../assets/work/avera-real-estate/06.jpg
-    alt: A terracotta door hanger that reads Just Sold with the Avera logo, on a dark door handle.
+    alt: A terracotta door hanger that reads Just Sold with the Avera logo, on a
+      dark door handle.
 ---
