@@ -1,22 +1,23 @@
 ---
 order: 5
 title: Once Upon a Time in Hollywood
-tagline: A poster for a fading star
+tagline: Movie Poster
 kind: Personal project
 discipline: Poster
 year: 2026
 services:
-  - Poster design
   - Art direction
 cover: ../../assets/work/movie-poster/cover.jpg
 coverShape: tall
-coverAlt: A framed yellow poster for Once Upon a Time in Hollywood leaning against a wall, showing a figure in a hat over a sunburst.
+coverAlt: A framed yellow poster for Once Upon a Time in Hollywood leaning
+  against a wall, showing a figure in a hat over a sunburst.
 hero:
   src: ../../assets/work/movie-poster/01.jpg
-  alt: The framed poster leaning against a wall in a sunlit room with a wooden chair.
-intro: >-
-  Once Upon a Time in Hollywood follows Rick Dalton, a star whose best days are behind
-  him. I built the poster around that feeling. Heavy blacks, warm gold and a retro
-  sunburst from the 1960s.
-blocks: []
+  alt: The framed poster leaning against a wall in a sunlit room with a wooden
+    chair.
+intro: This poster is inspired by the movie Once Upon a Time in Hollywood. It's
+  about Rick Dalton, played by Leonardo DiCaprio, and how he represents the idea
+  of a fading Hollywood star. I used bold blacks and warm golden tones, with a
+  retro sunburst design in the background, to capture the nostalgia of the 1960s
+  and the feeling of someone whose glory days are slowly coming to an end.
 ---
