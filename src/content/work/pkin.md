@@ -46,9 +46,7 @@ blocks:
           identity's blue.
   - type: banner
     label: Campaign and social
-    text: |-
-      "The same fragmentation logic, 
-      applied across every format and frame"
+    text: '"The same fragmentation logic, applied across every format and frame"'
   - type: pair
     images:
       - src: ../../assets/work/pkin/07.jpg
