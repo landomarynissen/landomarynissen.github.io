@@ -3,7 +3,7 @@ order: 1
 title: Pałac Kultury i Nauki
 tagline: From Monument to System
 kind: Graduation project
-discipline: Visual identity, wayfinding, digital, print, motion
+discipline: Branding
 year: 2026
 services:
   - "Art Direction "
