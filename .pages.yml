@@ -1,0 +1,187 @@
+# Settings for Pages CMS (app.pagescms.org), the editing screen for this site.
+# It only describes the forms. Deleting this file changes nothing on the website.
+
+media:
+  - name: images
+    label: Project images
+    input: src/assets/work
+    output: ../../assets/work
+    categories: [image]
+  - name: videos
+    label: Project videos
+    input: public/work
+    output: /work
+    categories: [video]
+
+content:
+  - name: work
+    label: Projects
+    type: collection
+    path: src/content/work
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, order, year]
+      sort: [order]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: order
+        label: Position
+        description: 1 is the first project on the site.
+        type: number
+        required: true
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: tagline
+        label: Tagline
+        description: One line under the title.
+        type: string
+        required: true
+      - name: kind
+        label: Kind
+        description: Shown in the work list. For example Graduation project, Concept brand, Personal project.
+        type: string
+        required: true
+      - name: discipline
+        label: Discipline
+        description: Shown in the work list. For example Visual identity, print.
+        type: string
+        required: true
+      - name: year
+        label: Year
+        type: number
+        required: true
+      - name: services
+        label: Services
+        description: What you did. One per line, for example Branding.
+        type: string
+        list: true
+      - name: cover
+        label: Cover image
+        description: The picture on the home page and in the work list.
+        type: image
+        required: true
+        options:
+          media: images
+      - name: coverShape
+        label: Cover shape
+        description: wide for landscape covers, tall for portrait covers.
+        type: select
+        options:
+          values: [wide, tall]
+      - name: coverAlt
+        label: Cover description
+        description: Describe the cover in one sentence, for people who cannot see it.
+        type: text
+        required: true
+      - name: hero
+        label: Top image
+        description: Big picture at the top of the project page. Leave empty to use the cover.
+        type: object
+        fields:
+          - name: src
+            label: Image
+            type: image
+            options:
+              media: images
+          - name: alt
+            label: Description
+            type: text
+      - name: intro
+        label: Intro
+        description: Three sentences at most.
+        type: text
+        required: true
+      - name: role
+        label: Role (not shown on the site)
+        type: string
+      - name: tools
+        label: Tools (not shown on the site)
+        type: string
+      - name: live
+        label: Live link
+        description: Full address starting with https://. Leave empty if there is none.
+        type: string
+      - name: blocks
+        label: Page content
+        description: The project page from top to bottom. Drag to reorder.
+        type: block
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{type} {label}"
+        blockKey: type
+        blocks:
+          - name: image
+            label: Image, full width
+            fields:
+              - name: src
+                label: Image
+                type: image
+                required: true
+                options:
+                  media: images
+              - name: alt
+                label: Description
+                type: text
+                required: true
+          - name: pair
+            label: Two images side by side
+            fields:
+              - name: images
+                label: Images
+                description: Exactly two.
+                type: object
+                list:
+                  min: 2
+                  max: 2
+                fields:
+                  - name: src
+                    label: Image
+                    type: image
+                    required: true
+                    options:
+                      media: images
+                  - name: alt
+                    label: Description
+                    type: text
+                    required: true
+          - name: video
+            label: Video
+            fields:
+              - name: src
+                label: Video file
+                type: file
+                required: true
+                options:
+                  media: videos
+              - name: poster
+                label: Still image
+                description: Shown before the video plays.
+                type: image
+                required: true
+                options:
+                  media: images
+              - name: label
+                label: Description
+                type: text
+                required: true
+          - name: banner
+            label: Banner
+            fields:
+              - name: label
+                label: Small word on the left
+                description: For example Concept. Can stay empty.
+                type: string
+              - name: text
+                label: Text
+                description: One or two short sentences.
+                type: text
+                required: true
