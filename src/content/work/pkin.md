@@ -22,9 +22,8 @@ tools: Illustrator, Photoshop, InDesign, After Effects
 blocks:
   - type: banner
     label: Concept
-    text: |-
-      "The identity is not designed around the building.
-       It is extracted from it"
+    text: '"The identity is not designed around the building. It is extracted from
+      it"'
   - type: video
     src: /work/pkin/02.mp4
     poster: ../../assets/work/pkin/02-poster.jpg
@@ -32,9 +31,8 @@ blocks:
       building.
   - type: banner
     label: Photography
-    text: |-
-      "Following the Hartwig principle - every frame isolates 
-      a fragment of the building rather than the whole"
+    text: '"Following the Hartwig principle - every frame isolates a fragment of the
+      building rather than the whole"'
   - type: image
     src: ../../assets/work/pkin/03.jpg
     alt: Vertical banners with the logo and black and white exhibition photos
@@ -48,9 +46,7 @@ blocks:
           identity's blue.
   - type: banner
     label: Campaign and social
-    text: |-
-      "The same fragmentation logic, 
-      applied across every format and frame"
+    text: '"The same fragmentation logic, applied across every format and frame"'
   - type: pair
     images:
       - src: ../../assets/work/pkin/07.jpg
@@ -64,9 +60,8 @@ blocks:
     label: Animated social media stories for the Edward Hartwig exhibition.
   - type: banner
     label: Wayfinding
-    text: |-
-      "Every function within the Palace carries a code. The letter 
-      defines the category, the number specifies the function"
+    text: '"Every function within the Palace carries a code. The letter defines the
+      category, the number specifies the function"'
   - type: image
     src: ../../assets/work/pkin/10.jpg
     alt: Wayfinding signs with codes such as A01 Restroom, N02 Elevator and E01
@@ -79,9 +74,8 @@ blocks:
         alt: A dark hanging sign that reads S01 Ticket Office with an arrow.
   - type: banner
     label: Digital
-    text: |-
-      "Interfaces prioritize structure, hierarchy, 
-      and orientation over decorative branding"
+    text: '"Interfaces prioritize structure, hierarchy, and orientation over
+      decorative branding"'
   - type: pair
     images:
       - src: ../../assets/work/pkin/12.jpg
