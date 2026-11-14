@@ -8,7 +8,9 @@ year: 2025
 services:
   - Branding
   - Visual identity
+  - Art Direction
 cover: ../../assets/work/avera-real-estate/cover.jpg
+coverShape: wide
 coverAlt: Three Avera Real Estate posters hanging on a concrete wall above a
   wooden bench.
 intro: Avera is a real estate company I made up. It sells intentional living,
