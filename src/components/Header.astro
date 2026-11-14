@@ -1,0 +1,92 @@
+---
+// The bar at the top of every page: a plain bar from edge to edge, with the
+// first name on the left and three links on the right. The page you are on
+// is a blue pill.
+import { link } from '../site.js';
+
+const pages = [
+  { label: 'Work', href: '/work/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+];
+
+// Used to mark the link of the page you are on.
+const here = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="wrap site-header__row">
+    <a class="site-header__name press" href={link('/')}>Lando</a>
+    <nav aria-label="Main">
+      <ul class="site-header__nav">
+        {
+          pages.map((page) => (
+            <li>
+              <a
+                class="press"
+                href={link(page.href)}
+                aria-current={here.startsWith(link(page.href)) ? 'page' : undefined}
+              >
+                {page.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  /* The bar stays at the top while you scroll. It is solid, in the page
+     colour, so the page slides underneath it. */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--paper);
+  }
+
+  .site-header__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-height: 3.5rem;
+  }
+
+  .site-header__name {
+    padding-block: 0.625rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .site-header__nav {
+    display: flex;
+    gap: clamp(0rem, 1vw, 0.5rem);
+    margin-right: -0.875rem; /* lines the last link's text up with the page edge */
+  }
+
+  .site-header__nav a {
+    display: inline-block;
+    padding: 0.5rem 0.875rem;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    transition: background-color var(--time-hover) ease;
+  }
+
+  /* The page you are on is a blue pill. */
+  .site-header__nav a[aria-current='page'] {
+    background: var(--blue);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .site-header__nav a:not([aria-current='page']):hover {
+      background: var(--linen);
+    }
+
+    .site-header__name:hover {
+      text-decoration: underline;
+    }
+  }
+</style>

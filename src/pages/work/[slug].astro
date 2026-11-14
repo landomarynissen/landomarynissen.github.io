@@ -1,0 +1,196 @@
+---
+// The project page. One template for every project: Astro makes a page
+// for each file in src/content/work/.
+import { getCollection } from 'astro:content';
+import { Image, getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Blocks from '../../components/Blocks.astro';
+import { link } from '../../site.js';
+
+export async function getStaticPaths() {
+  const projects = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return projects.map((project, index) => ({
+    params: { slug: project.id },
+    // "next" wraps around: after the last project comes the first again.
+    props: { project, next: projects[(index + 1) % projects.length] },
+  }));
+}
+
+const { project, next } = Astro.props;
+const p = project.data;
+const hero = p.hero ?? { src: p.cover, alt: p.coverAlt };
+
+// The picture shown when someone shares this page's link (1200 x 630 is the usual size).
+const share = await getImage({ src: p.cover, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+
+---
+
+<Base title={p.title} description={`${p.title}. ${p.tagline}.`} image={share.src}>
+  <article class="project">
+    <header class="wrap project__header">
+      <h1 class="title rise">{p.title}</h1>
+      <p class="lead rise" style="--i:1">{p.tagline}</p>
+    </header>
+
+    <div class="wrap rise" style="--i:2">
+      <Image
+        class="project__hero"
+        src={hero.src}
+        alt={hero.alt}
+        widths={[480, 800, 1200, 1600, 2400]}
+        sizes="(min-width: 100rem) 1520px, 94vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <div class="wrap project__about">
+      <p class="project__intro">{p.intro}</p>
+      <dl class="project__meta">
+        <div>
+          <dt>Year</dt>
+          <dd>{p.year}</dd>
+        </div>
+        {
+          p.services.length > 0 && (
+            <div>
+              <dt>Services</dt>
+              {p.services.map((service) => (
+                <dd>{service}</dd>
+              ))}
+            </div>
+          )
+        }
+        {
+          p.live && (
+            <div>
+              <dt>Live</dt>
+              <dd>
+                <a href={p.live} rel="noopener noreferrer">
+                  Visit the website
+                </a>
+              </dd>
+            </div>
+          )
+        }
+      </dl>
+    </div>
+
+    <div class="wrap">
+      <Blocks blocks={p.blocks} />
+    </div>
+
+    <!-- Floats at the bottom of the screen while you scroll through the project. -->
+    <p class="project__back">
+      <a class="button button--glass" href={link('/work/')}>← All work</a>
+    </p>
+  </article>
+
+  <!-- The next project: a plain line of large type, no panel. -->
+  <div class="wrap">
+    <a class="next" href={link(`/work/${next.id}/`)}>
+      <span class="next__label">Next project</span>
+      <span class="next__title">{next.data.title} <span aria-hidden="true">→</span></span>
+    </a>
+  </div>
+</Base>
+
+<style>
+  .project__header {
+    display: grid;
+    gap: var(--space-3);
+    padding-top: clamp(1.75rem, 4vw, 3.5rem);
+    padding-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  }
+
+  .project__hero {
+    width: 100%;
+    height: auto;
+    background: var(--linen);
+  }
+
+  .project__about {
+    display: grid;
+    gap: var(--space-8) var(--gutter);
+    padding-block: clamp(1.75rem, 4vw, 3.5rem);
+  }
+
+  .project__intro {
+    max-width: 30em;
+    font-size: var(--size-lead);
+    line-height: 1.3;
+    text-wrap: pretty;
+  }
+
+  /* Year and services: a small, quiet list next to the intro. */
+  .project__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6) var(--space-12);
+    align-content: start;
+    margin: 0;
+    font-size: var(--size-small);
+  }
+
+  .project__meta dt {
+    margin-bottom: var(--space-1);
+    color: var(--ink-soft);
+  }
+
+  .project__meta dd {
+    margin: 0;
+  }
+
+  /* "sticky" keeps the button at the bottom edge of the screen until the
+     project ends, then it stays behind instead of covering the footer. */
+  .project__back {
+    position: sticky;
+    bottom: var(--space-4);
+    z-index: 5;
+    width: max-content;
+    margin: var(--space-6) 0 0 calc(var(--margin) + var(--space-3));
+  }
+
+  .next {
+    display: grid;
+    gap: var(--space-1);
+    margin-top: clamp(2.5rem, 6vw, 5rem);
+    text-decoration: none;
+  }
+
+  .next__label {
+    font-size: var(--size-small);
+    color: var(--ink-soft);
+  }
+
+  .next__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 1.2rem + 2.6vw, 3.5rem);
+    font-weight: var(--display-weight);
+    font-stretch: var(--display-width);
+    letter-spacing: var(--display-tracking);
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  /* From tablet size up: intro on the left, year and services against the
+     right edge of the page. */
+  @media (min-width: 40rem) {
+    .project__about {
+      grid-template-columns: 1fr auto;
+    }
+
+    .project__meta {
+      justify-self: end;
+      flex-wrap: nowrap;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .next:hover .next__title {
+      text-decoration: underline;
+      text-decoration-thickness: 0.05em;
+      text-underline-offset: 0.14em;
+    }
+  }
+</style>

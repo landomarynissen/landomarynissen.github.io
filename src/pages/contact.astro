@@ -1,0 +1,60 @@
+---
+// Contact page: one blue block with the email in large type.
+import Base from '../layouts/Base.astro';
+import { site } from '../site.js';
+---
+
+<Base title="Contact" description="Get in touch with Lando Marynissen, graphic designer from Belgium." miniFooter>
+  <section class="contact">
+    <div class="wrap contact__inner">
+      <h1 class="display">Looking for a junior designer? Let's talk.</h1>
+      <a class="contact__email press" href={`mailto:${site.email}`}>{site.email}</a>
+      <p class="contact__links">
+        <a class="button" href={site.linkedin} rel="noopener noreferrer">LinkedIn</a>
+        <a class="button" href={site.instagram} rel="noopener noreferrer">Instagram</a>
+      </p>
+      <p class="contact__place">Based in Belgium.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* On this page the blue block stretches to fill the screen down to the footer. */
+  :global(main):has(.contact) {
+    display: grid;
+  }
+
+  /* The footer on this page has no top gap, so the blue runs down to it. */
+  .contact {
+    background: var(--blue);
+    padding-block: clamp(3rem, 10vw, 9rem);
+    margin-bottom: calc(clamp(4rem, 9vw, 7.5rem) * -1);
+  }
+
+  .contact__inner {
+    display: grid;
+    gap: var(--space-6);
+    justify-items: start;
+  }
+
+  .contact h1 {
+    max-width: 12em;
+  }
+
+  .contact__email {
+    max-width: 100%;
+    font-size: clamp(1.125rem, 4.4vw, 2.5rem);
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+
+  .contact__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .contact__place {
+    font-size: var(--size-small);
+  }
+</style>

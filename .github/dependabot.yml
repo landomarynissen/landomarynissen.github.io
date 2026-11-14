@@ -1,0 +1,15 @@
+# Dependabot checks once a week whether Astro (or anything it uses) has a
+# security fix or update, and opens a suggestion on GitHub when it does.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+
+  # Also keeps the publishing workflow up to date, once there is one.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"

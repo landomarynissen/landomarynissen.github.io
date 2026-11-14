@@ -1,0 +1,79 @@
+---
+// One project: a picture that links to the project page, with the title and
+// one line of text underneath. Nothing sits on top of the picture.
+import { Image } from 'astro:assets';
+import { link } from '../site.js';
+
+const {
+  project, // one entry from src/content/work/
+  shape = '4 / 3', // width / height of the picture frame
+  sizes = '(min-width: 40rem) 47vw, 94vw', // how wide the picture is on screen
+  eager = false, // true for the first picture on the page: load it right away
+} = Astro.props;
+
+const { title, tagline, cover, coverAlt } = project.data;
+---
+
+<a class="card" href={link(`/work/${project.id}/`)}>
+  <span class="card__media" style={`aspect-ratio:${shape}`}>
+    <Image
+      src={cover}
+      alt={coverAlt}
+      widths={[480, 800, 1200, 1600, 2400]}
+      sizes={sizes}
+      loading={eager ? 'eager' : 'lazy'}
+      fetchpriority={eager ? 'high' : 'auto'}
+    />
+  </span>
+  <span class="card__title">{title}</span>
+  <span class="card__tagline">{tagline}</span>
+</a>
+
+<style>
+  .card {
+    display: grid;
+    text-decoration: none;
+  }
+
+  .card__media {
+    display: block;
+    overflow: hidden;
+    margin-bottom: var(--space-3);
+    border-radius: var(--radius);
+    background: var(--linen);
+  }
+
+  .card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale var(--time-page) var(--ease-out);
+  }
+
+  .card__title {
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .card__tagline {
+    font-size: var(--size-small);
+    color: var(--ink-soft);
+  }
+
+  /* With a mouse: the picture grows a touch when you point at it. */
+  @media (hover: hover) and (pointer: fine) {
+    .card:hover .card__media img {
+      scale: 1.02;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card__media img {
+      transition: none;
+    }
+
+    .card:hover .card__media img {
+      scale: none;
+    }
+  }
+</style>

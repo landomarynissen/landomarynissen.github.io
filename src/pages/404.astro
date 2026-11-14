@@ -1,0 +1,21 @@
+---
+// Shown when someone opens an address that does not exist.
+import Base from '../layouts/Base.astro';
+import { link } from '../site.js';
+---
+
+<Base title="Page not found" noindex>
+  <section class="wrap missing">
+    <h1 class="display">This page does not exist.</h1>
+    <p><a class="button button--solid" href={link('/work/')}>Back to the work →</a></p>
+  </section>
+</Base>
+
+<style>
+  .missing {
+    display: grid;
+    gap: var(--space-6);
+    justify-items: start;
+    padding-block: clamp(3rem, 12vw, 10rem);
+  }
+</style>

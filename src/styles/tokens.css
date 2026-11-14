@@ -1,0 +1,87 @@
+/* Design tokens: every colour, size and timing on the site is named here.
+   Change a value in this file and it changes everywhere. See DESIGN.md. */
+
+:root {
+  /* Colour. Mostly neutrals: paper, linen, pebble, haze and charcoal ink.
+     The blue is the accent and is used sparingly. */
+  --paper: #f4f3ef;      /* page background */
+  --ink: #333435;        /* text: charcoal, never pure black */
+  --ink-soft: #5f5f5d;   /* secondary text (only on paper, linen or the two pale blues) */
+  --linen: #dfded9;      /* thin lines, quiet panels */
+  --pebble: #b5b1ae;     /* image placeholders, disabled things */
+  --haze: #b0bfcc;       /* grey-blue: panels and banners */
+
+  --blue: #97bbe4;       /* the one colour, full strength */
+  /* The same blue at 60%, 30% and 14%, mixed into the paper colour.
+     Text on any of them is always --ink. */
+  --blue-60: color-mix(in srgb, var(--blue) 60%, var(--paper));
+  --blue-30: color-mix(in srgb, var(--blue) 30%, var(--paper));
+  --blue-14: color-mix(in srgb, var(--blue) 14%, var(--paper));
+
+  /* Dark glass: charcoal, slightly see-through, with blur behind it.
+     Used for the header and for buttons that sit on pictures. Text on it is
+     always the paper colour. */
+  --glass: color-mix(in srgb, var(--ink) 80%, transparent);
+  --glass-edge: color-mix(in srgb, #ffffff 14%, transparent);
+  --glass-blur: blur(16px) saturate(1.5);
+
+  /* Type families */
+  --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-text: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+
+  /* How the display type is set. Width is the "voice" of the system. */
+  --display-width: 112%;
+  --display-weight: 600;
+  --display-tracking: -0.02em;
+  --display-leading: 0.98;
+
+  /* Type sizes. clamp(smallest, fluid, largest) grows with the screen. */
+  --size-display: clamp(2.375rem, 1.1rem + 5.4vw, 7rem);
+  --size-title: clamp(2.25rem, 1.2rem + 4.4vw, 6rem);
+  --size-heading: clamp(1.5rem, 1.25rem + 1.1vw, 2.5rem);
+  --size-lead: clamp(1.25rem, 1.1rem + 0.7vw, 2rem);
+  --size-body: clamp(1.0625rem, 1.02rem + 0.2vw, 1.1875rem);
+  --size-small: 0.9375rem;
+  --size-label: 0.8125rem;
+
+  /* Spacing scale, in steps of 4px */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Layout */
+  --margin: 1.25rem;     /* space at the left and right edge of the page */
+  --gutter: 1rem;        /* space between columns */
+  --max-width: 100rem;
+  --radius: 0.5rem;      /* rounded corners on cards, banners and panels */
+  --radius-pill: 999px;
+  --measure: 68ch;       /* longest comfortable line of text */
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --time-press: 120ms;
+  --time-hover: 200ms;
+  --time-page: 300ms;
+  --time-reveal: 500ms;
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --margin: 2rem;
+    --gutter: 1.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --margin: 2.5rem;
+  }
+}

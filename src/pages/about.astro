@@ -1,0 +1,150 @@
+---
+// About page. Everything here comes from Lando's resume; nothing is made up.
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import portrait from '../assets/portrait.jpg';
+
+const facts = [
+  {
+    title: 'Experience',
+    items: [
+      'Kwin, Brussels. Graphic design intern, August to December 2026.',
+      'Teoman Corp. Graphic design intern, January to June 2026.',
+      'Aurubis. Student communications, August 2024.',
+    ],
+  },
+  {
+    title: 'Education',
+    items: [
+      'Artevelde University of Applied Sciences, Ghent. B.A. International Graphic & Digital Media, magna cum laude.',
+      'Business Academy Southwest, Esbjerg. Multimedia Design, exchange semester.',
+    ],
+  },
+  {
+    title: 'Tools',
+    items: ['Illustrator', 'Photoshop', 'InDesign', 'Figma', 'After Effects', 'Premiere Pro', 'Lightroom'],
+  },
+  {
+    title: 'Languages',
+    items: ['Dutch, native', 'English, C1', 'German, B1'],
+  },
+];
+---
+
+<Base
+  title="About"
+  description="About Lando Marynissen, a graphic designer from Belgium with a focus on branding and editorial design."
+>
+  <section class="wrap about">
+    <Image
+      class="about__portrait"
+      src={portrait}
+      alt="Portrait of Lando Marynissen, looking to the side, outdoors."
+      widths={[480, 800, 1200]}
+      sizes="(min-width: 48rem) 33vw, 94vw"
+      loading="eager"
+    />
+
+    <div class="about__text">
+      <h1 class="heading about__lead">
+        I'm Lando. I design brand identities, editorial work and campaigns.
+      </h1>
+      <p class="body">
+        I enjoy translating ideas into clear, engaging visuals. I like developing vibrant,
+        thoughtful work that communicates clearly and leaves a lasting impression.
+      </p>
+      <p class="body">
+        I graduated magna cum laude in International Graphic & Digital Media at Artevelde
+        University of Applied Sciences in Ghent, with an exchange semester in Esbjerg, Denmark.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap facts" aria-label="Background">
+    {
+      facts.map((group) => (
+        <div class="facts__group">
+          <h2 class="facts__title">{group.title}</h2>
+          <ul>
+            {group.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+</Base>
+
+<style>
+  .about {
+    display: grid;
+    gap: var(--space-8) var(--gutter);
+    padding-top: clamp(2rem, 5vw, 4rem);
+  }
+
+  .about__portrait {
+    aspect-ratio: 4 / 5;
+    max-height: 70vh;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius);
+    background: var(--linen);
+  }
+
+  .about__text {
+    display: grid;
+    gap: var(--space-6);
+    align-content: start;
+  }
+
+  .about__lead {
+    font-size: clamp(1.75rem, 1.2rem + 2.4vw, 3.25rem);
+    font-stretch: var(--display-width);
+    letter-spacing: var(--display-tracking);
+    line-height: 1.05;
+    max-width: 16em;
+    text-wrap: balance;
+  }
+
+  .facts {
+    display: grid;
+    gap: var(--space-8) var(--gutter);
+    padding-top: clamp(3rem, 8vw, 6rem);
+  }
+
+  .facts__group {
+    display: grid;
+    gap: var(--space-3);
+    align-content: start;
+  }
+
+  .facts__title {
+    font-size: var(--size-small);
+    font-weight: 600;
+  }
+
+  .facts__group ul {
+    display: grid;
+    gap: var(--space-2);
+    font-size: var(--size-small);
+  }
+
+  @media (min-width: 48rem) {
+    .about {
+      grid-template-columns: 8fr 15fr;
+      align-items: start;
+    }
+
+    .facts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .facts {
+      grid-template-columns: 1.4fr 1.6fr 1fr 1fr;
+    }
+  }
+</style>

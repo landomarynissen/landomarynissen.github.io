@@ -1,0 +1,41 @@
+# Publishes the website to GitHub Pages.
+# Runs by itself every time you upload changes to the "main" branch.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  # Lets you start it by hand from the Actions tab on GitHub.
+  workflow_dispatch:
+
+# The only rights this job gets: read the code, publish the page.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# If two uploads come in quickly, finish the first one before the next.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v7
+      - name: Install, build and upload the site
+        uses: withastro/action@v6
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

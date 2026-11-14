@@ -1,0 +1,71 @@
+---
+// The frame every page sits in: the <head> with search and sharing tags,
+// then header, page content and footer.
+import '../styles/fonts.css';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, link } from '../site.js';
+
+const {
+  title, // shown in the browser tab and in search results
+  description = site.description,
+  image = '/og-default.png', // picture shown when the link is shared (project pages use their cover)
+  miniFooter = false,
+  noindex = false, // true = ask search engines to skip this page
+} = Astro.props;
+
+const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.role}`;
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+// Pictures made by Astro already have their full path; others get the site's base path.
+const imageUrl = new URL(image.startsWith('/_astro/') ? image : link(image), Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/* Security. GitHub Pages cannot send security headers, so the two that
+         work as tags are set here.
+         1. Content-Security-Policy: the browser may only load scripts, fonts,
+            pictures and video from this site itself, never from elsewhere.
+            It is left out of the local preview (npm run dev), which needs
+            extra connections to refresh the page while you work.
+         2. Referrer: other sites you link to only learn the site address,
+            not which page the visitor came from. */}
+    {
+      import.meta.env.PROD && (
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+        />
+      )
+    }
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" type="image/svg+xml" href={link('/favicon.svg')} />
+
+    <!-- How the page looks when someone shares the link -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <Header />
+    <main id="content">
+      <slot />
+    </main>
+    <Footer mini={miniFooter} />
+  </body>
+</html>

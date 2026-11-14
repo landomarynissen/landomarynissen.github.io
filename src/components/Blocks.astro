@@ -1,0 +1,165 @@
+---
+// Draws the list of "blocks" from a project file: pictures, pairs of
+// pictures, videos and blue banners, in the order they are written.
+import { Image, getImage } from 'astro:assets';
+import { link } from '../site.js';
+
+const { blocks } = Astro.props;
+
+// Videos need their still picture as a plain web address.
+const posters = new Map();
+for (const block of blocks) {
+  if (block.type === 'video') {
+    posters.set(block.src, (await getImage({ src: block.poster, width: 1600 })).src);
+  }
+}
+---
+
+<div class="blocks">
+  {
+    blocks.map((block) => {
+      if (block.type === 'image') {
+        return (
+          <Image
+            class="blocks__image reveal"
+            src={block.src}
+            alt={block.alt}
+            widths={[480, 800, 1200, 1600, 2400]}
+            sizes="(min-width: 100rem) 1520px, 94vw"
+            loading="lazy"
+          />
+        );
+      }
+      if (block.type === 'pair') {
+        return (
+          <div class="blocks__pair reveal">
+            {block.images.map((picture) => (
+              <Image
+                class="blocks__image"
+                src={picture.src}
+                alt={picture.alt}
+                widths={[480, 800, 1200, 1600]}
+                sizes="(min-width: 48rem) 47vw, 94vw"
+                loading="lazy"
+              />
+            ))}
+          </div>
+        );
+      }
+      if (block.type === 'video') {
+        return (
+          <video
+            class="blocks__video reveal"
+            src={link(block.src)}
+            poster={posters.get(block.src)}
+            aria-label={block.label}
+            muted
+            loop
+            playsinline
+            preload="none"
+            data-autoplay
+          />
+        );
+      }
+      if (block.type === 'banner') {
+        return (
+          <div class="banner reveal">
+            <p class="banner__label">{block.label}</p>
+            <p class="banner__text">{block.text}</p>
+          </div>
+        );
+      }
+    })
+  }
+</div>
+
+<script>
+  // Videos play only while they are on screen, and pause when they leave.
+  // People who asked their device for less motion get play controls instead.
+  const videos = document.querySelectorAll('video[data-autoplay]');
+  const lessMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (lessMotion) {
+    videos.forEach((video) => (video.controls = true));
+  } else {
+    const watcher = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) entry.target.play().catch(() => {});
+          else entry.target.pause();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    videos.forEach((video) => watcher.observe(video));
+  }
+</script>
+
+<style>
+  .blocks {
+    display: grid;
+    gap: var(--gutter);
+  }
+
+  /* Pictures and videos are square-cornered here; only banners are rounded. */
+  .blocks__image,
+  .blocks__video {
+    width: 100%;
+    height: auto;
+    background: var(--linen);
+  }
+
+  .blocks__video {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .blocks__pair {
+    display: grid;
+    gap: var(--gutter);
+  }
+
+  /* In a pair, both pictures get the same frame so the row stays even. */
+  .blocks__pair .blocks__image {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* A banner: small word on the left, the sentence in the right-hand column. */
+  .banner {
+    display: grid;
+    gap: var(--space-3) var(--gutter);
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    border-radius: var(--radius);
+    background: var(--linen); /* every banner is the same colour */
+  }
+
+  .banner__label {
+    font-size: var(--size-small);
+    font-weight: 500;
+  }
+
+  .banner__text {
+    max-width: 21em;
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1rem + 1.3vw, 2.25rem);
+    font-weight: var(--display-weight);
+    font-stretch: var(--display-width);
+    letter-spacing: var(--display-tracking);
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  @media (min-width: 48rem) {
+    .blocks__pair {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    /* Same two columns as a pair of pictures, so the sentence starts
+       exactly where the right-hand picture starts. */
+    .banner {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+</style>
