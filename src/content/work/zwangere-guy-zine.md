@@ -22,8 +22,6 @@ blocks:
       - src: ../../assets/work/zwangere-guy-zine/03.jpg
         alt: A spread with the quote I don't care about anything except hip-hop next to
           a black and white portrait.
-  - type: banner
-    text: Chaotic, but on purpose. Just like his music.
   - type: image
     src: ../../assets/work/zwangere-guy-zine/05.jpg
     alt: A spread with a vinyl record on a red page filled with lyrics.
