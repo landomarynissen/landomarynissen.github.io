@@ -6,46 +6,56 @@ kind: Graduation project
 discipline: Visual identity, wayfinding, digital, print, motion
 year: 2026
 services:
-  - Research
-  - Creative direction
-  - Branding
-  - Wayfinding
-  - Motion
+  - "Art Direction "
+  - Brand Strategy
+  - Visual Identity
 cover: ../../assets/work/pkin/hero.jpg
-coverAlt: The Pałac Kultury i Nauki logo on a dark banner hanging on the front of the building in Warsaw.
-intro: >-
-  The Palace of Culture and Science was a gift from the Soviet Union, and its past still
-  divides opinion. Today it is full of theatres, museums and cinemas. I gave it an
-  identity that shows the place people actually use.
+coverShape: wide
+coverAlt: The Pałac Kultury i Nauki logo on a dark banner hanging on the front
+  of the building in Warsaw.
+intro: The Palace of Culture and Science was built as a political symbol. This
+  identity moves away from that. Instead of treating the building as a monument
+  with one fixed meaning, the visual system translates its architecture into a
+  flexible framework that can carry many different functions and programs.
 role: Research, creative direction, logo, identity design and animation
 tools: Illustrator, Photoshop, InDesign, After Effects
 blocks:
   - type: banner
     label: Concept
-    text: The identity is not designed around the building. It is extracted from it.
+    text: |-
+      "The identity is not designed around the building.
+       It is extracted from it"
   - type: video
     src: /work/pkin/02.mp4
     poster: ../../assets/work/pkin/02-poster.jpg
-    label: Animation of the logo shapes being traced from the arched windows of the building.
+    label: Animation of the logo shapes being traced from the arched windows of the
+      building.
   - type: banner
     label: Photography
-    text: One rule for photography, named after Polish photographer Edward Hartwig. Show a fragment. Never the whole building.
+    text: |-
+      "Following the Hartwig principle - every frame isolates 
+      a fragment of the building rather than the whole"
   - type: image
     src: ../../assets/work/pkin/03.jpg
-    alt: Vertical banners with the logo and black and white exhibition photos hanging between the columns of the Palace.
+    alt: Vertical banners with the logo and black and white exhibition photos
+      hanging between the columns of the Palace.
   - type: pair
     images:
       - src: ../../assets/work/pkin/04.jpg
         alt: A large billboard on the building that reads From Monument to System.
       - src: ../../assets/work/pkin/05.jpg
-        alt: Three posters hanging between the stone columns, one of them in the identity's blue.
+        alt: Three posters hanging between the stone columns, one of them in the
+          identity's blue.
   - type: banner
     label: Campaign and social
-    text: One logic for every poster, post and screen. The building is always cropped, never complete.
+    text: |-
+      "The same fragmentation logic, 
+      applied across every format and frame"
   - type: pair
     images:
       - src: ../../assets/work/pkin/07.jpg
-        alt: Three social media posts combining blue shapes with black and white photos of the building.
+        alt: Three social media posts combining blue shapes with black and white photos
+          of the building.
       - src: ../../assets/work/pkin/08.jpg
         alt: Three phone screens with story layouts for an Edward Hartwig exhibition.
   - type: video
@@ -54,10 +64,13 @@ blocks:
     label: Animated social media stories for the Edward Hartwig exhibition.
   - type: banner
     label: Wayfinding
-    text: Every venue and service carries a code. The letter is the category. The number is the function.
+    text: |-
+      "Every function within the Palace carries a code. The letter 
+      defines the category, the number specifies the function"
   - type: image
     src: ../../assets/work/pkin/10.jpg
-    alt: Wayfinding signs with codes such as A01 Restroom, N02 Elevator and E01 Congress Hall, with direction arrows.
+    alt: Wayfinding signs with codes such as A01 Restroom, N02 Elevator and E01
+      Congress Hall, with direction arrows.
   - type: pair
     images:
       - src: ../../assets/work/pkin/09.jpg
@@ -66,7 +79,9 @@ blocks:
         alt: A dark hanging sign that reads S01 Ticket Office with an arrow.
   - type: banner
     label: Digital
-    text: On screen, finding your way comes first. Branding comes second.
+    text: |-
+      "Interfaces prioritize structure, hierarchy, 
+      and orientation over decorative branding"
   - type: pair
     images:
       - src: ../../assets/work/pkin/12.jpg
@@ -78,13 +93,14 @@ blocks:
     alt: A ticket kiosk screen showing the Viewing Terrace ticket order.
   - type: banner
     label: Identity materials
-    text: The identity at its smallest, functional scale.
+    text: '"The identity at its smallest, functional scale"'
   - type: pair
     images:
       - src: ../../assets/work/pkin/15.jpg
         alt: Staff badges and a lanyard in black, white and blue.
       - src: ../../assets/work/pkin/16.jpg
-        alt: Business cards, one with the name Jan Novak and one with a cropped blue logo.
+        alt: Business cards, one with the name Jan Novak and one with a cropped blue
+          logo.
   - type: pair
     images:
       - src: ../../assets/work/pkin/17.jpg
@@ -97,13 +113,12 @@ blocks:
   - type: pair
     images:
       - src: ../../assets/work/pkin/20.jpg
-        alt: A person lying down in a white jacket with a large cropped logo on the back.
+        alt: A person lying down in a white jacket with a large cropped logo on the
+          back.
       - src: ../../assets/work/pkin/21.jpg
         alt: A tote bag with the logo lying in striped sunlight.
   - type: video
     src: /work/pkin/22.mp4
     poster: ../../assets/work/pkin/22-poster.jpg
     label: Animated presentation of the identity concept.
-  - type: banner
-    text: The Palace was given to Warsaw. This identity gives it back.
 ---
