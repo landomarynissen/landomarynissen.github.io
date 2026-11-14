@@ -1,24 +1,26 @@
 ---
 order: 3
 title: The Brothers Lionheart
-tagline: A theatre campaign for a children's classic
-kind: Student team project
+tagline: Promotional Campaign for a children’s fantasy novel
+kind: School project
 discipline: Campaign, web design
 year: 2025
 services:
   - Campaign
   - Visual identity
   - Web design
+  - Art Direction
 cover: ../../assets/work/the-brothers-lionheart/cover.jpg
 coverShape: tall
-coverAlt: A poster for the play The Brothers Lionheart in a street display, showing two illustrated boys in front of a mountain landscape.
+coverAlt: A poster for the play The Brothers Lionheart in a street display,
+  showing two illustrated boys in front of a mountain landscape.
 hero:
   src: ../../assets/work/the-brothers-lionheart/01.jpg
   alt: The Brothers Lionheart logo over an illustrated autumn landscape.
-intro: >-
-  Every winter the volunteers of Esbjerg Amateur Theatre stage a play in Musikhuset
-  Esbjerg. This time it was The Brothers Lionheart, after the novel by Astrid Lindgren.
-  Our job was to make sure people knew about it, with a campaign and a website.
+intro: Every winter the volunteers of Esbjerg Amateur Theatre stage a play in
+  Musikhuset Esbjerg. This time it was The Brothers Lionheart, after the novel
+  by Astrid Lindgren. Our job was to make sure people knew about it, with a
+  campaign and a website.
 role: Wireframes, all designs and the visual style
 tools: Figma, Illustrator, Photoshop, InDesign, Premiere Pro, Midjourney, HTML/CSS
 live: https://andreialex232.github.io/The-Lionheart-Brothers/
