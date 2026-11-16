@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 2
 title: Zwangere Guy
 tagline: Editorial Zine
 kind: Personal project
