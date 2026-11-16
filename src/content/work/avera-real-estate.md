@@ -1,5 +1,5 @@
 ---
-order: 2
+order: 4
 title: Avera Real Estate
 tagline: Built for living, designed for life
 kind: Personal project
