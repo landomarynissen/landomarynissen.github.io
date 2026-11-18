@@ -47,17 +47,10 @@ blocks:
   - type: banner
     label: Campaign and social
     text: '"The same fragmentation logic, applied across every format and frame"'
-  - type: pair
-    images:
-      - src: ../../assets/work/pkin/07.jpg
-        alt: Three social media posts combining blue shapes with black and white photos
-          of the building.
-      - src: ../../assets/work/pkin/08.jpg
-        alt: Three phone screens with story layouts for an Edward Hartwig exhibition.
   - type: video
-    src: /work/pkin/06.mp4
-    poster: ../../assets/work/pkin/06-poster.jpg
-    label: Animated social media stories for the Edward Hartwig exhibition.
+    src: /work/06.mp4
+    poster: ../../assets/work/07-1.jpg
+    label: social media assets
   - type: banner
     label: Wayfinding
     text: '"Every function within the Palace carries a code. The letter defines the
@@ -83,6 +76,9 @@ blocks:
       - src: ../../assets/work/pkin/13.jpg
         alt: An exhibition page on a laptop with the title Where Light Defines Form.
   - type: image
+    src: ../../assets/work/pkin/19.jpg
+    alt: A letterhead and a blue envelope with the logo.
+  - type: image
     src: ../../assets/work/pkin/14.jpg
     alt: A ticket kiosk screen showing the Viewing Terrace ticket order.
   - type: banner
@@ -101,9 +97,6 @@ blocks:
         alt: A blue entry ticket and a postcard with the logo.
       - src: ../../assets/work/pkin/18.jpg
         alt: An open brochure with blue pages next to its dark cover.
-  - type: image
-    src: ../../assets/work/pkin/19.jpg
-    alt: A letterhead and a blue envelope with the logo.
   - type: pair
     images:
       - src: ../../assets/work/pkin/20.jpg
