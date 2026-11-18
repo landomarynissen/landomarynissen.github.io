@@ -11,7 +11,7 @@ services:
   - Web design
   - Art Direction
 cover: ../../assets/work/the-brothers-lionheart/cover.jpg
-coverShape: tall
+coverShape: wide
 coverAlt: A poster for the play The Brothers Lionheart in a street display,
   showing two illustrated boys in front of a mountain landscape.
 hero:
