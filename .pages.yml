@@ -163,10 +163,9 @@ content:
                 options:
                   media: videos
               - name: poster
-                label: Still image
-                description: Shown before the video plays.
+                label: Still image (optional)
+                description: Shown before the video plays. Leave empty to show the first frame.
                 type: image
-                required: true
                 options:
                   media: images
               - name: label

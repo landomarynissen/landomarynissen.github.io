@@ -47,10 +47,13 @@ blocks:
   - type: banner
     label: Campaign and social
     text: '"The same fragmentation logic, applied across every format and frame"'
+  - type: image
+    src: ../../assets/work/07.jpg
+    alt: Three Instagram posts for the Palace, in blue, cream and black, each with a
+      black and white photo cropped by the arched logo shape.
   - type: video
     src: /work/06.mp4
-    poster: ../../assets/work/07-1.jpg
-    label: social media assets
+    label: Animated Instagram stories for the Edward Hartwig exhibition.
   - type: banner
     label: Wayfinding
     text: '"Every function within the Palace carries a code. The letter defines the
@@ -76,9 +79,6 @@ blocks:
       - src: ../../assets/work/pkin/13.jpg
         alt: An exhibition page on a laptop with the title Where Light Defines Form.
   - type: image
-    src: ../../assets/work/pkin/19.jpg
-    alt: A letterhead and a blue envelope with the logo.
-  - type: image
     src: ../../assets/work/pkin/14.jpg
     alt: A ticket kiosk screen showing the Viewing Terrace ticket order.
   - type: banner
@@ -97,6 +97,9 @@ blocks:
         alt: A blue entry ticket and a postcard with the logo.
       - src: ../../assets/work/pkin/18.jpg
         alt: An open brochure with blue pages next to its dark cover.
+  - type: image
+    src: ../../assets/work/pkin/19.jpg
+    alt: A letterhead and a blue envelope with the logo.
   - type: pair
     images:
       - src: ../../assets/work/pkin/20.jpg

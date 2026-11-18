@@ -7,9 +7,10 @@ import { link } from '../site.js';
 const { blocks } = Astro.props;
 
 // Videos need their still picture as a plain web address.
+// A video without one shows its first frame instead (the #t=0.001 below).
 const posters = new Map();
 for (const block of blocks) {
-  if (block.type === 'video') {
+  if (block.type === 'video' && block.poster) {
     posters.set(block.src, (await getImage({ src: block.poster, width: 1600 })).src);
   }
 }
@@ -50,13 +51,13 @@ for (const block of blocks) {
         return (
           <video
             class="blocks__video reveal"
-            src={link(block.src)}
+            src={block.poster ? link(block.src) : `${link(block.src)}#t=0.001`}
             poster={posters.get(block.src)}
             aria-label={block.label}
             muted
             loop
             playsinline
-            preload="none"
+            preload={block.poster ? 'none' : 'metadata'}
             data-autoplay
           />
         );
@@ -140,14 +141,13 @@ for (const block of blocks) {
   }
 
   .banner__text {
-    max-width: 21em;
     font-family: var(--font-display);
     font-size: clamp(1.25rem, 1rem + 1.3vw, 2.25rem);
     font-weight: var(--display-weight);
     font-stretch: var(--display-width);
     letter-spacing: var(--display-tracking);
     line-height: 1.1;
-    text-wrap: balance;
+    text-wrap: pretty; /* fill the column, but never leave one word alone on the last line */
   }
 
   @media (min-width: 48rem) {
@@ -155,8 +155,12 @@ for (const block of blocks) {
       grid-template-columns: 1fr 1fr;
     }
 
-    /* Same two columns as a pair of pictures, so the sentence starts
-       exactly where the right-hand picture starts. */
+  }
+
+  /* From 1200px wide: same two columns as a pair of pictures, so the
+     sentence starts exactly where the right-hand picture starts.
+     Below that the label sits above the sentence, which gets the full width. */
+  @media (min-width: 75rem) {
     .banner {
       grid-template-columns: 1fr 1fr;
       align-items: start;

@@ -38,7 +38,7 @@ const work = defineCollection({
             z.object({
               type: z.literal('video'),
               src: z.string(), // path inside the public/ folder, e.g. /work/pkin/02.mp4
-              poster: image(), // still picture shown before the video plays
+              poster: image().optional(), // still picture shown before the video plays (optional)
               label: z.string(), // describes the video
             }),
             z.object({
