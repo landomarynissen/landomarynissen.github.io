@@ -29,7 +29,7 @@ const share = await getImage({ src: p.cover, width: 1200, height: 630, fit: 'cov
   <article class="project">
     <header class="wrap project__header">
       <h1 class="title rise">{p.title}</h1>
-      <p class="lead rise" style="--i:1">{p.tagline}</p>
+      <p class="lead project__tagline rise" style="--i:1">{p.tagline}</p>
     </header>
 
     <div class="wrap rise" style="--i:2">
@@ -113,6 +113,12 @@ const share = await getImage({ src: p.cover, width: 1200, height: 630, fit: 'cov
     display: grid;
     gap: var(--space-8) var(--gutter);
     padding-block: clamp(1.75rem, 4vw, 3.5rem);
+  }
+
+  /* A subtitle is one short line: let it use the width it needs. */
+  .project__tagline {
+    max-width: none;
+    text-wrap: balance;
   }
 
   .project__intro {
