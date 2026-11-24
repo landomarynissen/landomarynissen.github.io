@@ -26,7 +26,7 @@ import portrait from '../assets/portrait.jpg';
       </h1>
       <p class="body">
         Graphic designer from Belgium, graduated in 2026. I'm finishing my internship at
-        Kwin, a communication agency in Brussels. Most of my work is branding and editorial.
+        Kwin, a&nbsp;communication agency in Brussels.
       </p>
       <p class="body">
         I studied International Graphic & Digital Media at Artevelde in Ghent and graduated
@@ -59,6 +59,11 @@ import portrait from '../assets/portrait.jpg';
     display: grid;
     gap: var(--space-6);
     align-content: start;
+  }
+
+  /* Shorter lines than the default, so small words don't hang at a line end. */
+  .about__text .body {
+    max-width: 30em;
   }
 
   .about__lead {
