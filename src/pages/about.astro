@@ -1,34 +1,9 @@
 ---
-// About page. Everything here comes from Lando's resume; nothing is made up.
+// About page. Everything here comes from Lando's CV; nothing is made up.
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import portrait from '../assets/portrait.jpg';
 
-const facts = [
-  {
-    title: 'Experience',
-    items: [
-      'Kwin, Brussels. Graphic design intern, August to December 2026.',
-      'Teoman Corp. Graphic design intern, January to June 2026.',
-      'Aurubis. Student communications, August 2024.',
-    ],
-  },
-  {
-    title: 'Education',
-    items: [
-      'Artevelde University of Applied Sciences, Ghent. B.A. International Graphic & Digital Media, magna cum laude.',
-      'Business Academy Southwest, Esbjerg. Multimedia Design, exchange semester.',
-    ],
-  },
-  {
-    title: 'Tools',
-    items: ['Illustrator', 'Photoshop', 'InDesign', 'Figma', 'After Effects', 'Premiere Pro', 'Lightroom'],
-  },
-  {
-    title: 'Languages',
-    items: ['Dutch, native', 'English, C1', 'German, A2'],
-  },
-];
 ---
 
 <Base
@@ -61,20 +36,6 @@ const facts = [
     </div>
   </section>
 
-  <section class="wrap facts" aria-label="Background">
-    {
-      facts.map((group) => (
-        <div class="facts__group">
-          <h2 class="facts__title">{group.title}</h2>
-          <ul>
-            {group.items.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </div>
-      ))
-    }
-  </section>
 </Base>
 
 <style>
@@ -109,43 +70,10 @@ const facts = [
     text-wrap: balance;
   }
 
-  .facts {
-    display: grid;
-    gap: var(--space-8) var(--gutter);
-    padding-top: clamp(3rem, 8vw, 6rem);
-  }
-
-  .facts__group {
-    display: grid;
-    gap: var(--space-3);
-    align-content: start;
-  }
-
-  .facts__title {
-    font-size: var(--size-small);
-    font-weight: 600;
-  }
-
-  .facts__group ul {
-    display: grid;
-    gap: var(--space-2);
-    font-size: var(--size-small);
-  }
-
   @media (min-width: 48rem) {
     .about {
       grid-template-columns: 8fr 15fr;
       align-items: start;
-    }
-
-    .facts {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 64rem) {
-    .facts {
-      grid-template-columns: 1.4fr 1.6fr 1fr 1fr;
     }
   }
 </style>
